@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Watch</title>
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f1f5f9;
+            color: #0f172a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .stopwatch-card {
+            width: 100%;
+            max-width: 360px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 16px;
+            padding: 28px 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #0369a1;
+        }
+
+        .badge {
+            font-size: 12px;
+            font-weight: 600;
+            color: #0284c7;
+            background: #e0f2fe;
+            padding: 3px 10px;
+            border-radius: 6px;
+            border: 1px solid #bae6fd;
+        }
+
+        /* Display Box */
+        .display-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px 12px;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        #display {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 46px;
+            font-weight: 600;
+            color: #0f172a;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: -1px;
+        }
+
+        /* Controls Grid */
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        button {
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            height: 42px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.15s ease, border-color 0.15s ease;
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        #startBtn {
+            background-color: #0284c7;
+            color: #ffffff;
+        }
+        #startBtn:hover {
+            background-color: #0369a1;
+        }
+
+        #stopBtn {
+            background-color: #e11d48;
+            color: #ffffff;
+        }
+        #stopBtn:hover {
+            background-color: #be123c;
+        }
+
+        #lapBtn {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            border-color: #bae6fd;
+        }
+        #lapBtn:hover {
+            background-color: #bae6fd;
+        }
+
+        #resetBtn {
+            background-color: #f1f5f9;
+            color: #475569;
+            border-color: #cbd5e1;
+        }
+        #resetBtn:hover {
+            background-color: #e2e8f0;
+            color: #1e293b;
+        }
+
+        /* Laps List */
+        .laps-container {
+            border-top: 1px solid #e2e8f0;
+            padding-top: 16px;
+        }
+
+        #lapsList {
+            list-style: none;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        #lapsList::-webkit-scrollbar {
+            width: 4px;
+        }
+        #lapsList::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        #lapsList li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 4px;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 13px;
+        }
+
+        #lapsList li:last-child {
+            border-bottom: none;
+        }
+
+        .lap-number {
+            font-weight: 500;
+            color: #64748b;
+        }
+
+        .lap-time {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            color: #0f172a;
+            font-variant-numeric: tabular-nums;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stopwatch-card">
+        <div class="header">
+            <span class="title">Stopwatch</span>
+            <span class="badge"><span id="lapCounter">0</span> Laps</span>
+        </div>
+
+        <div class="display-box">
+            <h1 id="display">00:00:00</h1>
+        </div>
+
+        <div class="controls">
+            <button id="startBtn">Start</button>
+            <button id="stopBtn">Stop</button>
+            <button id="lapBtn">Lap</button>
+            <button id="resetBtn">Reset</button>
+        </div>
+
+        <div class="laps-container">
+            <ul id="lapsList"></ul>
+        </div>
+    </div>
+
+    <script src="stop watch.js"></script>
+</body>
+</html>
